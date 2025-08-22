@@ -1,82 +1,57 @@
-# Lightweight React Template for KAVIA
+# Notes App Frontend (React)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Modern, minimalistic light-themed UI for managing personal notes. Features a top navigation bar, category sidebar, and main content area for browsing and editing notes.
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+- Create, edit, delete notes
+- View list of notes with categories
+- Global search and category filter
+- Clean, responsive, and accessible UI
+- Environment-based backend API configuration
 
-## Getting Started
+## Environment
 
-In the project directory, you can run:
+Copy `.env.example` to `.env` and set:
 
-### `npm start`
+```
+REACT_APP_API_BASE_URL=http://localhost:4000
+```
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Do not include a trailing slash. If omitted, the app will call the same origin.
 
-### `npm test`
+## Backend Contract
 
-Launches the test runner in interactive watch mode.
+This UI expects these endpoints:
+- GET    /notes
+- POST   /notes
+- PUT    /notes/:id
+- DELETE /notes/:id
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
+Notes should include fields similar to:
+```
+{
+  "id": "string",
+  "title": "string",
+  "content": "string",
+  "category": "Personal|Work|Ideas|Archive|Uncategorized",
+  "tags": ["string", ...],
+  "createdAt": "ISO date",
+  "updatedAt": "ISO date"
 }
 ```
 
-### Components
+## Scripts
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+- `npm start` - Run development server
+- `npm test` - Run tests
+- `npm run build` - Production build
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+## Design
 
-## Learn More
+Color palette:
+- Primary: #1976d2
+- Secondary: #424242
+- Accent: #ffca28
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The UI is implemented with vanilla CSS (no external UI libs) in `src/App.css`.
