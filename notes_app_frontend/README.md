@@ -9,6 +9,12 @@ Modern, minimalistic light-themed UI for managing personal notes. Features a top
 - Global search and category filter
 - Clean, responsive, and accessible UI
 - Environment-based backend API configuration
+- Basic login page and session persistence (demo mode)
+
+## Authentication (Demo)
+The app now includes a basic login page at `/login`. In demo mode, any non-empty username and password will sign you in. The signed-in user is stored in `localStorage` to persist across refreshes. The navbar displays the current user's name and a Logout button.
+
+To integrate with a real backend later, replace the login logic in `src/context/AuthContext.js` with a real API call and store the returned token/user details.
 
 ## Environment
 
